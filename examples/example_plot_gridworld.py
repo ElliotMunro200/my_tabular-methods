@@ -40,3 +40,11 @@ model = gw.create_gridworld()
 # plot world
 path = "../doc/imgs/unsolved_gridworld.png"
 plot_gridworld(model, title="Test world", path=path)
+
+# [added]
+from examples.example_value_iteration import value_iteration
+# solve with value iteration
+value_function, policy = value_iteration(model, maxiter=100)
+
+# plot the results
+plot_gridworld(model, value_function=value_function, policy=policy, title="Value iteration")

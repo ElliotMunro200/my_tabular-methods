@@ -6,6 +6,8 @@ from algorithms.dynamic_programming import value_iteration
 from algorithms.dynamic_programming import policy_iteration
 from utils.plots import plot_gridworld
 
+from test_gym import wandb_init
+
 ###########################################################
 #          Run  iteration on a grid world            #
 ###########################################################
@@ -38,6 +40,9 @@ gw.add_transition_probability(p_good_transition=0.7,
                               bias=0.5)
 gw.add_discount(discount=0.9)
 model = gw.create_gridworld()
+
+run_config = {"goal_reward": 10}
+wandb_init(extra_config=run_config)
 
 # solve with policy iteration
 value_function, policy = policy_iteration(model, maxiter=100)

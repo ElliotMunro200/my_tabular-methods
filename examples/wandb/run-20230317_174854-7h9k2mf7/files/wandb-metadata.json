@@ -1,0 +1,85 @@
+{
+    "os": "Linux-5.15.0-67-generic-x86_64-with-glibc2.31",
+    "python": "3.10.9",
+    "heartbeatAt": "2023-03-17T04:48:55.804962",
+    "startedAt": "2023-03-17T04:48:54.861647",
+    "docker": null,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "program": "/home/elliot/Repos/DRL_Gym_PyTorch/tabular-methods/examples/example_policy_iteration.py",
+    "codePath": "examples/example_policy_iteration.py",
+    "git": {
+        "remote": "https://github.com/linesd/tabular-methods.git",
+        "commit": "05ee6488feffc64d3bb7335f26b2e9688d90a57b"
+    },
+    "email": null,
+    "root": "/home/elliot/Repos/DRL_Gym_PyTorch/tabular-methods",
+    "host": "elliot-desktop",
+    "username": "elliot",
+    "executable": "/home/elliot/miniconda3/envs/drl_gym_torch/bin/python",
+    "cpu_count": 4,
+    "cpu_count_logical": 8,
+    "cpu_freq": {
+        "current": 1711.357375,
+        "min": 1600.0,
+        "max": 3800.0
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 1700.0,
+            "min": 1600.0,
+            "max": 3800.0
+        },
+        {
+            "current": 1700.0,
+            "min": 1600.0,
+            "max": 3800.0
+        },
+        {
+            "current": 1600.0,
+            "min": 1600.0,
+            "max": 3800.0
+        },
+        {
+            "current": 2100.0,
+            "min": 1600.0,
+            "max": 3800.0
+        },
+        {
+            "current": 1790.859,
+            "min": 1600.0,
+            "max": 3800.0
+        },
+        {
+            "current": 1600.0,
+            "min": 1600.0,
+            "max": 3800.0
+        },
+        {
+            "current": 1700.0,
+            "min": 1600.0,
+            "max": 3800.0
+        },
+        {
+            "current": 1600.0,
+            "min": 1600.0,
+            "max": 3800.0
+        }
+    ],
+    "disk": {
+        "total": 90.91740798950195,
+        "used": 40.956077575683594
+    },
+    "gpu": "NVIDIA GeForce GTX 1070 Ti",
+    "gpu_count": 1,
+    "gpu_devices": [
+        {
+            "name": "NVIDIA GeForce GTX 1070 Ti",
+            "memory_total": 8589934592
+        }
+    ],
+    "memory": {
+        "total": 11.643173217773438
+    }
+}

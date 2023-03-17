@@ -31,7 +31,7 @@ def value_iteration(model, maxiter=100):
 
     for i in range(maxiter):
         # initialize delta
-        delta = 0
+        delta = np.zeros(1,)
         # perform Bellman update for each state
         for state in range(model.num_states):
             # store old value
@@ -39,7 +39,7 @@ def value_iteration(model, maxiter=100):
             # compute the value function
             val_[state] = np.max( np.sum((model.R[state] + model.gamma * val_) * model.P[state,:,:], 0) )
             # find maximum change in value
-            delta = np.max( (delta, np.abs(tmp - val_[state])) )
+            delta = np.max( (delta, np.abs((tmp - val_[state]))))
         # stopping criteria
         if delta <= EPS * (1 - model.gamma) / model.gamma:
             print("Value iteration converged after %d iterations." %  i)
