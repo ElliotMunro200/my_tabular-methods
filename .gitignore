@@ -1,0 +1,18 @@
+
+# jupyter notebook
+.ipynb_checkpoints
+
+
+# pycharm
+__pycache__
+.pytest_cache
+.idea/*
+
+# dev
+dev.py
+
+# images made
+*.png
+
+#wandb
+examples/wandb/
