@@ -15,4 +15,4 @@ dev.py
 *.png
 
 #wandb
-.examples/wandb/*
+examples/wandb/

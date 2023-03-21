@@ -1,5 +1,7 @@
 import numpy as np
 
+import wandb
+
 def sarsa(model, alpha=0.5, epsilon=0.1, maxiter=100, maxeps=1000):
     """
     Solves the supplied environment using SARSA.
@@ -53,7 +55,7 @@ def sarsa(model, alpha=0.5, epsilon=0.1, maxiter=100, maxeps=1000):
         state = int(model.start_state_seq)
         # sample first e-greedy action
         action = sample_action(Q, state, model.num_actions, epsilon)
-
+        rewards = np.zeros((1,))
         for j in range(maxiter):
             # initialize p and r
             p, r = 0, np.random.random()
@@ -65,8 +67,15 @@ def sarsa(model, alpha=0.5, epsilon=0.1, maxiter=100, maxeps=1000):
                     break
             # epsilon-greedy action selection
             next_action = sample_action(Q, next_state, model.num_actions, epsilon)
+            # Calculate and log the reward
+            reward = model.R[state]
+            np.append(rewards, reward)
+            if j % 100 == 0:
+                mean_reward = np.mean(rewards)
+                wandb.log({"reward": mean_reward})
+                rewards = np.zeros((1,))
             # Calculate the temporal difference and update Q function
-            Q[state, action] += alpha * (model.R[state] + model.gamma * Q[next_state, next_action] - Q[state, action])
+            Q[state, action] += alpha * (reward + model.gamma * Q[next_state, next_action] - Q[state, action])
             # End episode is state is a terminal state
 
             if np.any(state == model.goal_states_seq):
@@ -136,7 +145,7 @@ def qlearning(model, alpha=0.5, epsilon=0.1, maxiter=100, maxeps=1000):
 
         # for each new episode, start at the given start state
         state = int(model.start_state_seq)
-
+        rewards = np.zeros((1,))
         for j in range(maxiter):
             # sample first e-greedy action
             action = sample_action(Q, state, model.num_actions, epsilon)
@@ -149,9 +158,15 @@ def qlearning(model, alpha=0.5, epsilon=0.1, maxiter=100, maxeps=1000):
                 p += model.P[state, next_state, action]
                 if r <= p:
                     break
-
+            # Calculate and log the reward
+            reward = model.R[state]
+            np.append(rewards, reward)
+            if j % 100 == 0:
+                mean_reward = np.mean(rewards)
+                wandb.log({"reward": mean_reward})
+                rewards = np.zeros((1,))
             # Calculate the temporal difference and update Q function
-            Q[state, action] += alpha * (model.R[state] + model.gamma * np.max(Q[next_state, :]) - Q[state, action])
+            Q[state, action] += alpha * (reward + model.gamma * np.max(Q[next_state, :]) - Q[state, action])
 
             # count the state visits
             state_counts[state] += 1
